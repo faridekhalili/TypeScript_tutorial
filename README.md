@@ -115,24 +115,24 @@
   - **Syntax:** `type1 & type2 & ...`.
 - **Literal Types:**
   - **Syntax:** `let var: value1 | value2 | ...`.
-- **Nullable Types:**
+- **Optional Chaining:** To simplify code and remove the need for null checks.
   - We should explicitly use `null` and/or `undefined` in the type union statement if we want this to be possible (sometimes?).
-  - **The Nullish Coalescing Operator:**
-    - **Falsy Values:** `(undefined, null, '', false, 0)`.
-    - **The Nullish Coalescing Operator:** Checks for the value being _null_ or _undefined_.
-      - **Syntax:** `variable ?? the default'`: checks to see if variable is _null_ of _undefined_ and if yes, the default is returned, otherwise the variable is returned.
-    - **Optional Property Access Operator:**
-      - **Syntax:** `property?.method()`: Then it would return _undefined_ if that property is _null_ or _undefined_.
-    - **Optional Element Access Operator:**
-      - **Syntax:** `array?.[index]`: Then it would return _undefined_ if that element is _null_ or _undefined_.
-    - **Optional Call Operator:**
-      - **Syntax:** `function?.(parameter)`: Then it would return _undefined_ if that function is _null_ or _undefined_.
+  - **Falsy Values:** `(undefined, null, '', false, 0)`.
+  - **The Nullish Coalescing Operator:** To fallback to a default value when dealing with _null_/_undefined_ objects. 
+    - **Syntax:** `variable ?? the default'`: checks to see if variable is _null_ of _undefined_ and if yes, the default is returned, otherwise the variable is returned.
+  - **Optional Property Access Operator:**
+    - **Syntax:** `property?.method()`: Then it would return _undefined_ if that property is _null_ or _undefined_.
+  - **Optional Element Access Operator:**
+    - **Syntax:** `array?.[index]`: Then it would return _undefined_ if that element is _null_ or _undefined_.
+  - **Optional Call Operator:**
+    - **Syntax:** `function?.(parameter)`: Then it would return _undefined_ if that function is _null_ or _undefined_.
 - **Type Assertions:** For when we know more about the type of an object than TypeScript itself.
   - If something is of type B sub-type of type A, and TypeScript is just assuming that is of type A, then intellisense might be more comprehensice if we use type assertion to explicitly tell TypeScript that it is of type B.
   - **Syntax:**
       - `let var = something as B`: Then we're telling that thing is of type B, while TypeScript would presume it is of type A.
       - `let var = <B> something`: Completely the same thing.
   - **Note:** This is not providing type conversion.
-- **unknown Type:** A good substitute for the _any_ type when it seems inevitable. Then we can use type narrowing (the compiler will force this).
+- **unknown Type:** A type-safe version of _any_.
+   - A good substitute for the _any_ type when it seems inevitable. Then we can use type narrowing (the compiler will force this).
 - **never Type:** This is used to specifically tell the compiler that some function never returns anything because if we don't, it'll be assumed to be void.
   - Occasions this might happen: Where there is an infinite loop in the body of the function or if it throws an error.
